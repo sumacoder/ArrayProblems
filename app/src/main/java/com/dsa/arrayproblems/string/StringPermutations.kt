@@ -1,4 +1,4 @@
-package com.dsa.arrayproblems.problems
+package com.dsa.arrayproblems.string
 
 import java.util.function.BiFunction
 
