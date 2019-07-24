@@ -10,6 +10,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        StringPermutations.printPermutations("aabc")
+        // This will remove duplicates and print permutation in lexicographical order
+        //StringPermutations.printPermutationsNoDuplicates("aabc")
+        // This prints with duplicates
+        StringPermutations.printPermutation("aabc", "")
     }
 }

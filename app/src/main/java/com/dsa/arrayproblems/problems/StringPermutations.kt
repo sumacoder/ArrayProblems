@@ -10,7 +10,54 @@ import java.util.function.BiFunction
  */
 object StringPermutations {
 
-    fun printPermutations(input: String) {
+    /**
+     * This just prints all combination without worrying about duplicates results
+     */
+    fun printPermutation(input: String, result: String) {
+        if (input.isEmpty()) {
+            println("Output: $result")
+            return
+        }
+
+        val size = input.length
+        for (i in 0 until size) {
+            /**
+             * Step 1: Input: abc, output: ""
+             * In first Step we copy first character from input string to result string and remove that character
+             * from input string. Pass that input and result to recursive function call
+             *
+             * Step 2: Input: bc, output: a
+             * Step 3: Input: c, output: ab
+             * Step 4: Input: , output: abc -> Print out string
+             * Till here only recursive call happens so i value will be 0
+             *
+             * Step 5: Input: b, output: ac
+             * Step 6: Input: , output: acb -> Print out string
+             *
+             * Step 7: Input: ac, output: b
+             * Step 8: Input: c, output: ba
+             * Step 9: Input: , output: bac -> Print out string
+             *
+             * Step 10: Input: a, output: bc
+             * Step 11: Input: , output: bca -> Print out string
+             *
+             * Step 12: Input: ab, output: c
+             * Step 13: Input: b, output: ca
+             * Step 14: Input: , output: cab -> Print out string
+             *
+             * Step 15: Input: a, output: cb
+             * Step 16: Input: , output: cba -> Print out string
+             */
+            printPermutation(input.substring(0, i) + input.substring(i + 1, input.length),
+                result + input[i])
+        }
+    }
+
+    /**
+     * This prints permutations of a string with out any duplicates and in efficient way than regular
+     * recursive and backtracking.
+     */
+    fun printPermutationsNoDuplicates(input: String) {
         println("Input String: $input")
         val inputSize = input.length
         // this map is used to hold unique characters as key and number of times it repeats in the
@@ -82,4 +129,6 @@ object StringPermutations {
             str.append(c)
         println("Combination: $str")
     }
+
+
 }
